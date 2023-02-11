@@ -11,9 +11,9 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
-  def filmography
+  def filmography # many side of the relationship (could be called "movies")
     dir_id = self.id
-    Movie.where({ :director_id => dir_id }) # use id of director to query Director class
+    matching_movies = Movie.where({ :director_id => dir_id }) # use id of director to query Director class
     return matching_movies
   end
 end
