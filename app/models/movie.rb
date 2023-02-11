@@ -13,4 +13,15 @@
 #  director_id :integer
 #
 class Movie < ApplicationRecord
+  def director
+    d_id = self.director_id # self is the object you're calling the method on at the time
+    matching_directors = Director.where({ :id => d_id })
+    return matching_directors.at(0)
+  end
+
+  def characters
+    a_id = self.id
+    matching_rows = Characters.where({ :movie_id => a_id })
+    return matching_rows # could be many rows (on the many side)
+  end
 end
